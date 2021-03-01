@@ -2,12 +2,15 @@ package by.juki.ui;
 
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.awt.*;
+import java.net.URL;
 
 public class AppLauncher extends Application {
 
@@ -17,18 +20,12 @@ public class AppLauncher extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        //create scene
-        Label helloWorldLabel = new Label("Hello world!");
-        helloWorldLabel.setAlignment(Pos.CENTER);
-        helloWorldLabel.setFont(javafx.scene.text.Font.font(Font.SANS_SERIF));
-        helloWorldLabel.setMinHeight(20);
-        Scene primaryScene = new Scene(helloWorldLabel);
 
-        //configure stage
-        stage.setTitle("TP_LAB_1");
-        stage.setWidth(1000);
-        stage.setHeight(600);
-        stage.setScene(primaryScene);
-        stage.show();
+        FXMLLoader loader = new FXMLLoader();
+        Parent root = loader.load(getClass().getClassLoader().getResourceAsStream("mainScene.fxml"));
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("TP_LAB_1");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
 }
